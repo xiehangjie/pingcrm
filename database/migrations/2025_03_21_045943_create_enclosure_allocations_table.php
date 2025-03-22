@@ -10,12 +10,13 @@ return new class extends Migration
     {
         Schema::create('enclosure_allocations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('crocodile_id');
-            $table->unsignedBigInteger('enclosure_id');
+            $table->foreignId('crocodile_id')->constrained()->onDelete('cascade');
+            $table->foreignId('enclosure_id')->constrained()->onDelete('cascade');
+            $table->dateTime('allocated_at')->useCurrent()->comment('分配时间');
             $table->timestamps();
-
-            $table->foreign('crocodile_id')->references('id')->on('crocodiles')->onDelete('cascade');
-            $table->foreign('enclosure_id')->references('id')->on('enclosures')->onDelete('cascade');
+            
+            // 复合索引优化查询性能
+            $table->index(['enclosure_id', 'allocated_at']);
         });
     }
 

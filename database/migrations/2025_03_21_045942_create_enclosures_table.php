@@ -10,10 +10,13 @@ return new class extends Migration
     {
         Schema::create('enclosures', function (Blueprint $table) {
             $table->id();
-            $table->string('pool_id')->unique();
-            $table->integer('capacity');
-            // 添加养殖池类型字段，假设类型用字符串表示，长度可根据实际情况调整
-            $table->string('pool_type', 100)->nullable();
+            $table->string('pool_id')->unique()->comment('池编号');
+            $table->integer('capacity')->comment('最大容量');
+            $table->string('pool_type', 100)->comment('池类型');
+            $table->integer('current_count')->default(0)->comment('当前数量');
+            $table->enum('status', ['normal', 'critical', 'overload'])
+                  ->default('normal')
+                  ->comment('状态');
             $table->timestamps();
         });
     }

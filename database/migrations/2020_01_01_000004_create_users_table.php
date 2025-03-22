@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('account_id')->index();
             $table->string('first_name', 25);
             $table->string('last_name', 25);
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('owner')->default(false);
             $table->string('photo_path', 100)->nullable();
             // 在 up 方法中添加权限字段
-            $table->string('permissions')->nullable()->comment('用户权限，以逗号分隔的权限标识');
+            $table->string('permissions')->nullable()->comment('用户权限');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
