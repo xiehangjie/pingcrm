@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('diagnosis')->nullable()->comment('诊断结果');
             $table->foreignId('veterinarian_id')->constrained('users')->comment('负责兽医');
             $table->timestamps();
-            
+
             // 时空数据索引
             $table->index(['crocodile_id', 'check_date']);
         });

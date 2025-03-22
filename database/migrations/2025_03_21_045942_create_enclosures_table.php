@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('pool_type', 100)->comment('池类型');
             $table->integer('current_count')->default(0)->comment('当前数量');
             $table->enum('status', ['normal', 'critical', 'overload'])
-                  ->default('normal')
-                  ->comment('状态');
+                ->default('normal')
+                ->comment('状态');
             $table->timestamps();
         });
     }

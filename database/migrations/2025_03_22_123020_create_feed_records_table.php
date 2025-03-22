@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('operator_id')->constrained('users')->comment('操作人员');
             $table->decimal('fcr', 5, 2)->nullable()->comment('饲料转化率');
             $table->timestamps();
-            
+
             // 多态关联索引
             $table->index(['target_id', 'target_type']);
         });

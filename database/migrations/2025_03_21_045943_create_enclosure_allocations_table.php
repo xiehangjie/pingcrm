@@ -14,7 +14,7 @@ return new class extends Migration
             $table->foreignId('enclosure_id')->constrained()->onDelete('cascade');
             $table->dateTime('allocated_at')->useCurrent()->comment('分配时间');
             $table->timestamps();
-            
+
             // 复合索引优化查询性能
             $table->index(['enclosure_id', 'allocated_at']);
         });

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('unit')->default('ml')->comment('计量单位');
             $table->text('usage_instructions')->nullable()->comment('使用说明');
             $table->timestamps();
-            
+
             // 有效期索引
             $table->index('expiry_date');
         });

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('hatch_count')->nullable()->comment('孵化成功数');
             $table->text('environment_log')->nullable()->comment('环境参数记录');
             $table->timestamps();
-            
+
             // 遗传分析索引
             $table->index(['male_id', 'female_id']);
         });

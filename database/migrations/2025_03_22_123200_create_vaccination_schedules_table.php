@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('vaccinator_id')->constrained('users')->comment('接种人员');
             $table->text('notes')->nullable()->comment('接种备注');
             $table->timestamps();
-            
+
             // 时效性索引
             $table->index(['due_date', 'actual_date']);
         });
